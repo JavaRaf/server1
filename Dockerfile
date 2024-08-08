@@ -1,10 +1,10 @@
-# Use a imagem Node.js baseada em Alpine
-FROM node:20.15.1-alpine
+# Use a imagem oficial do Node.js como base
+FROM node:18
 
-# Define o diretório de trabalho
-WORKDIR /app
+# Cria e define o diretório de trabalho
+WORKDIR /usr/src/app
 
-# Copia o package.json e o package-lock.json
+# Copia os arquivos package.json e package-lock.json
 COPY package*.json ./
 
 # Instala as dependências
@@ -13,11 +13,11 @@ RUN npm install
 # Copia o restante do código da aplicação
 COPY . .
 
-# Compila o TypeScript (se necessário)
+# Compila o código TypeScript
 RUN npm run build
 
-# Expõe a porta em que a aplicação irá rodar
+# Exponha a porta que o app irá usar
 EXPOSE 3000
 
-# Comando para iniciar a aplicação
+# Comando para iniciar o aplicativo
 CMD ["npm", "start"]
