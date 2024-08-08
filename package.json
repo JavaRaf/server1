@@ -1,11 +1,15 @@
 {
-  "name": "backend",
+  "name": "server1",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "start": "npx ts-node src/index.ts",
-    "build": "tsc"
-  },
+
+ "scripts": {
+  "build": "tsc",
+  "migrate": "npx prisma migrate dev --name init",
+  "dev": "npx ts-node src/index.ts",
+  "start": "npm run migrate && npx node dist/index.js"
+},
+
   "keywords": [],
   "author": "",
   "license": "ISC",
