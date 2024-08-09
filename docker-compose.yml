@@ -13,20 +13,5 @@ services:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
-
-  app:
-    build:
-      context: .
-    container_name: my_app
-    environment:
-      DATABASE_URL: mysql://root:root@db/mydb
-    ports:
-      - "3000:3000"
-    depends_on:
-      - db
-    volumes:
-      - ./app:/usr/src/app
-
-
 volumes:
   mysql_data:
