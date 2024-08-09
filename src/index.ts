@@ -2,12 +2,19 @@ import express from 'express';
 import dotenv from 'dotenv';
 import routers from './routers';
 import path from 'path';
+import cors from "cors"
+
+
+
 
 // envs
 dotenv.config();
 
 // express
 const app = express();
+
+//malditos erros de cors
+app.use(cors());
 
 //usar json pra comunicar
 app.use(express.json());
