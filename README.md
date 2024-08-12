@@ -1,4 +1,4 @@
-## Lembresse de iniciar seu docker
+## Lembre-se de iniciar seu docker
 
 1. Baixe as dependencias, compile e suba o docker usando o comando :
     ```bash
