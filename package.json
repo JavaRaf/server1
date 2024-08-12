@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "npm install && docker-compose up --build && tsc",
+    "build": "npm ci && docker-compose up --build -d && tsc",
     "start": "node dist/index.js"
     
   },
