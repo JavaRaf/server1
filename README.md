@@ -1,9 +1,6 @@
-1. **Crie e inicie os containers Docker com Docker Compose.** Execute o comando:
-    ```bash
-    docker-compose up --build
-    ```
+## Lembresse de iniciar seu docker
 
-2. Compile o projeto usando o comando:
+1. Baixe as dependencias, compile e suba o docker usando o comando :
     ```bash
     npm run build
     ```
