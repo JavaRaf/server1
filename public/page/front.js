@@ -45,7 +45,7 @@ button.addEventListener('click', async () => {
         inputFile.value = '';
         responseDiv.textContent = '';
         failedResponse.textContent = '';
-    }, 3000);
+    }, 4000);
     
 });
 
