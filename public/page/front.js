@@ -2,6 +2,7 @@
 const button = document.getElementById('enviar');
 const inputFile = document.getElementById('file');
 const responseDiv = document.getElementById('response');
+const failedResponse = document.getElementById('failedResponse');
 
 button.addEventListener('click', async () => {
 
@@ -12,12 +13,13 @@ button.addEventListener('click', async () => {
         return;
     }
 
-    
-    Array.from(files).forEach(async (file) => {
+    let successfulResponses = 0;
+    let failedResponses = 0;
+
+    const uploadPromises = Array.from(files).map(async (file) => {
         console.log(`Enviando arquivo: ${file.name}`);
 
         try {
-            
             const formData = new FormData();
             formData.append('file', file);
 
@@ -27,9 +29,23 @@ button.addEventListener('click', async () => {
                 }
             });
 
-            responseDiv.textContent += `Arquivo ${file.name} enviado com sucesso!\n`;
+            successfulResponses += 1;
         } catch (error) {
-            responseDiv.textContent += `Erro ao enviar o arquivo ${file.name}: ${error.message}\n`;
+            failedResponses += 1;
         }
     });
+
+    await Promise.all(uploadPromises);
+
+    responseDiv.textContent = `Uploads bem-sucedidos: ${successfulResponses}`;
+    failedResponse.textContent = `Uploads falhos: ${failedResponses}`;
+
+    
+    setTimeout(() => {
+        inputFile.value = '';
+        responseDiv.textContent = '';
+        failedResponse.textContent = '';
+    }, 3000);
+    
 });
+
